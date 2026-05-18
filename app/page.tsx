@@ -142,6 +142,10 @@ export default function HomePage() {
         >
           <div
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
               fontFamily: 'var(--font-inter-tight), system-ui, sans-serif',
               fontSize: '12px',
               fontWeight: 500,
@@ -152,6 +156,7 @@ export default function HomePage() {
               marginBottom: '16px',
             }}
           >
+            <span className="pulse-dot" aria-hidden="true" />
             Get the next issue, free
           </div>
           <SignupForm variant="hero" />

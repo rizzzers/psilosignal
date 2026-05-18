@@ -169,6 +169,63 @@ button { font-family: inherit; cursor: pointer; }
   pointer-events: none;
 }
 
+/* ===== Signup form card with animated gradient border ===== */
+@keyframes gradient-border {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes btn-shimmer {
+  to { background-position: 200% center; }
+}
+
+.form-card {
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(105deg, var(--lavender), var(--sky-blue), var(--sunshine), var(--lavender));
+  background-size: 300% 300%;
+  animation: gradient-border 4s ease infinite;
+  box-shadow: 0 20px 60px -20px rgba(82, 127, 193, 0.25);
+}
+
+.form-card-inner {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+}
+
+.subscribe-btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(105deg, var(--lavender) 0%, var(--sky-blue) 45%, var(--sunshine) 100%);
+  background-size: 200% auto;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  animation: btn-shimmer 2.8s linear infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -8px rgba(82, 127, 193, 0.45);
+}
+
+.subscribe-btn:disabled {
+  animation: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* ===== Signup form inputs ===== */
 .signup-input {
   padding: 18px 22px;

@@ -141,66 +141,67 @@ export default function SignupForm({ variant = 'hero' }: SignupFormProps) {
 
   // Hero variant
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.6fr',
-          gap: '10px',
-          marginBottom: '10px',
-        }}
-        className="signup-row"
-      >
-        <input
-          className="signup-input"
-          type="text"
-          placeholder="First name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-          aria-label="First name"
-        />
-        <input
-          className="signup-input"
-          type="email"
-          placeholder="you@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          aria-label="Email address"
-        />
+    <div className="form-card">
+      <div className="form-card-inner">
+        <form onSubmit={handleSubmit} noValidate>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1.6fr',
+              gap: '10px',
+              marginBottom: '10px',
+            }}
+            className="signup-row"
+          >
+            <input
+              className="signup-input"
+              type="text"
+              placeholder="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+              aria-label="First name"
+            />
+            <input
+              className="signup-input"
+              type="email"
+              placeholder="you@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-label="Email address"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="subscribe-btn"
+          >
+            {status === 'loading' ? (
+              'Subscribing...'
+            ) : (
+              <>
+                Get the Rose Hill Review
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </>
+            )}
+          </button>
+          {errorMessage && (
+            <p
+              style={{
+                textAlign: 'center',
+                marginTop: '12px',
+                fontSize: '14px',
+                color: '#e05252',
+              }}
+            >
+              {errorMessage}
+            </p>
+          )}
+        </form>
       </div>
-      <button
-        type="submit"
-        disabled={status === 'loading'}
-        style={{
-          width: '100%',
-          padding: '18px',
-          background: 'var(--navy-dark)',
-          color: 'var(--white)',
-          border: 'none',
-          borderRadius: '12px',
-          fontSize: '15px',
-          fontWeight: 500,
-          transition: 'background 0.2s ease',
-          cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-          opacity: status === 'loading' ? 0.7 : 1,
-        }}
-      >
-        {status === 'loading' ? 'Subscribing...' : 'Subscribe to Rose Hill Review'}
-      </button>
-      {errorMessage && (
-        <p
-          style={{
-            textAlign: 'center',
-            marginTop: '12px',
-            fontSize: '14px',
-            color: '#e05252',
-          }}
-        >
-          {errorMessage}
-        </p>
-      )}
       <style>{`
         @media (max-width: 640px) {
           .signup-row {
@@ -208,6 +209,6 @@ export default function SignupForm({ variant = 'hero' }: SignupFormProps) {
           }
         }
       `}</style>
-    </form>
+    </div>
   )
 }
