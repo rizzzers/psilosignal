@@ -125,12 +125,48 @@ export default function HomePage() {
             lineHeight: 1.5,
             color: 'var(--navy-med)',
             maxWidth: '640px',
-            margin: '0 auto 64px',
+            margin: '0 auto 48px',
             fontWeight: 400,
           }}
         >
           Psychedelic medicine is having its scientific moment. Most coverage cannot tell breakthrough from press release. Every Tuesday, you get the difference, in plain language, with the citations to back it up.
         </p>
+
+        {/* Hero signup */}
+        <div
+          id="subscribe"
+          style={{
+            maxWidth: '520px',
+            margin: '0 auto 72px',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: 'var(--font-inter-tight), system-ui, sans-serif',
+              fontSize: '12px',
+              fontWeight: 500,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--navy-lite)',
+              textAlign: 'center',
+              marginBottom: '16px',
+            }}
+          >
+            Get the next issue, free
+          </div>
+          <SignupForm variant="hero" />
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: '16px',
+              fontSize: '13px',
+              color: 'var(--navy-lite)',
+            }}
+          >
+            {/* TODO: update subscriber count */}
+            Join <strong style={{ color: 'var(--navy-dark)', fontWeight: 500 }}>8,400+ readers</strong> &middot; One email per week &middot; Unsubscribe anytime
+          </div>
+        </div>
 
         {/* Hero object */}
         <div
@@ -195,42 +231,6 @@ export default function HomePage() {
                 7 min read &middot; Tuesday, May 5
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Hero signup */}
-        <div
-          id="subscribe"
-          style={{
-            maxWidth: '520px',
-            margin: '0 auto 120px',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: 'var(--font-inter-tight), system-ui, sans-serif',
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'var(--navy-lite)',
-              textAlign: 'center',
-              marginBottom: '16px',
-            }}
-          >
-            Get the next issue, free
-          </div>
-          <SignupForm variant="hero" />
-          <div
-            style={{
-              textAlign: 'center',
-              marginTop: '16px',
-              fontSize: '13px',
-              color: 'var(--navy-lite)',
-            }}
-          >
-            {/* TODO: update subscriber count */}
-            Join <strong style={{ color: 'var(--navy-dark)', fontWeight: 500 }}>8,400+ readers</strong> &middot; One email per week &middot; Unsubscribe anytime
           </div>
         </div>
       </section>
