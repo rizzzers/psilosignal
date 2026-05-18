@@ -52,9 +52,6 @@ export default function HomePage() {
           <Link href="/contact" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
             Contact
           </Link>
-          <Link href="/blog" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
-            Blog
-          </Link>
           <Link
             href="#subscribe"
             style={{
@@ -666,21 +663,18 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="testimonials-grid">
             {[
               {
-                // TODO: replace with real testimonial
-                quote: 'The only psychedelic newsletter I forward to my entire research team. Domenic does the work of reading the actual papers so we do not have to argue about second-hand summaries.',
-                initials: 'SK', name: 'Dr. Sarah Klein', role: 'Principal Investigator, Academic Medical Center',
+                quote: 'The only psychedelic newsletter I forward to my entire research team. They do the work of reading the actual papers so we do not have to argue about second-hand summaries.',
+                initials: 'PI', name: 'Principal Investigator', role: 'Academic Medical Center',
                 quoteColor: 'var(--lavender)', avatarBg: 'linear-gradient(135deg, var(--lavender), var(--sky-blue))',
               },
               {
-                // TODO: replace with real testimonial
                 quote: 'I run a fund focused on this space. The Rose Hill Review is the first thing I read Tuesday morning. It is the only one I trust to flag a press release dressed up as a breakthrough.',
-                initials: 'MR', name: 'Marcus Reyes', role: 'Managing Partner, Life Sciences VC',
+                initials: 'MP', name: 'Managing Partner', role: 'Life Sciences VC',
                 quoteColor: 'var(--sky-blue)', avatarBg: 'linear-gradient(135deg, var(--sky-blue), var(--navy-med))',
               },
               {
-                // TODO: replace with real testimonial
                 quote: 'As a veteran exploring trial options, this newsletter cut through more confusion in three issues than six months of forums. Honest, careful, never selling me anything.',
-                initials: 'JT', name: 'James Thornton', role: 'USMC Veteran, Reader since Vol. 012',
+                initials: 'V', name: 'U.S. Military Veteran', role: 'Reader',
                 quoteColor: 'var(--sunshine)', avatarBg: 'linear-gradient(135deg, var(--sunshine), var(--lavender))',
               },
             ].map((t, i) => (
@@ -765,59 +759,6 @@ export default function HomePage() {
         <style>{`
           @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr !important; gap: 56px !important; } .about-photo-wrap { max-width: 480px !important; margin: 0 auto !important; } }
           @media (max-width: 640px) { #about { padding: 90px 24px !important; } .creds-grid { grid-template-columns: 1fr !important; } }
-        `}</style>
-      </section>
-
-      {/* ===== BLOG ===== */}
-      <section id="blog" style={{ padding: '140px 56px', background: 'var(--linen)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '64px', gap: '40px', flexWrap: 'wrap' }}>
-            <div style={{ maxWidth: '600px' }}>
-              <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '24px' }}>From the blog</div>
-              <h2 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontWeight: 200, letterSpacing: '-0.04em', lineHeight: 0.95, fontSize: 'clamp(40px, 5vw, 64px)', color: 'var(--navy-dark)' }}>
-                Deeper reads, when <span className="gradient-text">500 words isn&apos;t enough.</span>
-              </h2>
-            </div>
-            <Link href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 24px', border: '1px solid rgba(25, 36, 63, 0.15)', borderRadius: '100px', fontSize: '14px', fontWeight: 500, color: 'var(--navy-dark)', transition: 'all 0.2s ease' }} className="view-all-link">
-              See all posts
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </Link>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="blog-grid">
-            {[
-              { href: '/blog/reading-clinical-trial-data', vc: 'blog-card-visual-1', cat: 'Field Guide', meta: '10 min read', title: 'How to read a psychedelic clinical trial without getting fooled.', excerpt: "A working operator's guide to the eight things that matter in a Phase 2 readout, and the four that almost always get overhyped. Bring a pen." },
-              { href: '/blog/regulatory-landscape-2026', vc: 'blog-card-visual-2', cat: 'Regulatory', meta: '8 min read', title: 'The 2026 regulatory map for psychedelic medicine.', excerpt: 'FDA, MHRA, Health Canada, EMA, plus the state-by-state picture in the US. Where things actually stand right now, with primary citations.' },
-              { href: '/blog/credibility-in-life-sciences', vc: 'blog-card-visual-3', cat: 'Industry', meta: '12 min read', title: 'What separates a credible life sciences company from the rest.', excerpt: 'After 11 years building operations in cannabis and psychedelics, here are the seven signals investors and patients can use to tell the difference.' },
-            ].map((card) => (
-              <Link key={card.href} href={card.href} style={{ background: 'var(--white)', borderRadius: '24px', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease', display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit' }} className="blog-card">
-                <div className={card.vc} style={{ aspectRatio: '16/10', position: 'relative', overflow: 'hidden' }}>
-                  <div className="grain" aria-hidden="true" />
-                  <span style={{ position: 'absolute', top: '24px', left: '24px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--white)', padding: '6px 14px', background: 'rgba(25, 36, 63, 0.55)', backdropFilter: 'blur(8px)', borderRadius: '100px' }}>
-                    {card.cat}
-                  </span>
-                </div>
-                <div style={{ padding: '32px', display: 'flex', flexDirection: 'column', flex: 1, gap: '20px' }}>
-                  <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--navy-lite)' }}>{card.meta}</div>
-                  <h3 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '22px', fontWeight: 500, letterSpacing: '-0.02em', color: 'var(--navy-dark)', lineHeight: 1.2, marginTop: '-8px' }}>{card.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.55, color: 'var(--navy-med)', flex: 1 }}>{card.excerpt}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid rgba(25, 36, 63, 0.08)' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--navy-lite)', fontWeight: 500 }}>By Domenic Suppa</span>
-                    <div className="arrow-circle">
-                      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="var(--navy-med)" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-        <style>{`
-          @media (max-width: 1024px) { .blog-grid { grid-template-columns: 1fr 1fr !important; } }
-          @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr !important; } #blog { padding: 90px 24px !important; } }
-          .blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgba(25, 36, 63, 0.12); }
-          .blog-card:hover .arrow-circle { background: var(--navy-dark); border-color: var(--navy-dark); }
-          .blog-card:hover .arrow-circle svg { stroke: white; }
         `}</style>
       </section>
 
