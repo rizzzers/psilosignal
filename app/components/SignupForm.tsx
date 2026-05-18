@@ -187,7 +187,7 @@ export default function SignupForm({ variant = 'hero' }: SignupFormProps) {
           opacity: status === 'loading' ? 0.7 : 1,
         }}
       >
-        {status === 'loading' ? 'Subscribing...' : 'Subscribe to Psilosignal'}
+        {status === 'loading' ? 'Subscribing...' : 'Subscribe to Rose Hill Review'}
       </button>
       {errorMessage && (
         <p

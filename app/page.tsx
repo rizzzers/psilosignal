@@ -37,7 +37,7 @@ export default function HomePage() {
           }}
         >
           <span className="nav-brand-mark" aria-hidden="true" />
-          <span>Psilosignal</span>
+          <span>Rose Hill Review</span>
         </Link>
         <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
           <Link href="#how" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }}>
@@ -49,8 +49,8 @@ export default function HomePage() {
           <Link href="#issues" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
             Issues
           </Link>
-          <Link href="#about" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
-            Domenic
+          <Link href="/contact" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
+            Contact
           </Link>
           <Link href="/blog" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }} className="nav-hide">
             Blog
@@ -101,7 +101,7 @@ export default function HomePage() {
           }}
         >
           <span className="pulse-dot" aria-hidden="true" />
-          A weekly newsletter from Domenic Suppa, COO Rose Hill Life Sciences
+          A psychedelic brief from Rose Hill Life Sciences
         </div>
 
         <h1
@@ -132,7 +132,7 @@ export default function HomePage() {
             fontWeight: 400,
           }}
         >
-          Psychedelic medicine is having its scientific moment. Most coverage cannot tell breakthrough from press release. Psilosignal can. Every Tuesday, you get the difference, in plain language, with the citations to back it up.
+          Psychedelic medicine is having its scientific moment. Most coverage cannot tell breakthrough from press release. Every Tuesday, you get the difference, in plain language, with the citations to back it up.
         </p>
 
         {/* Hero object */}
@@ -288,106 +288,7 @@ export default function HomePage() {
                 fontWeight: 400,
               }}
             >
-              In 2026, more than 1,800 articles will be published about psychedelic medicine. Most will be press releases dressed as journalism. A small fraction will move the science forward. Knowing the difference is a full-time job. Psilosignal does it for you.
-            </p>
-          </div>
-
-          {/* Signal vs Noise chart */}
-          <div
-            style={{
-              background: 'var(--white)',
-              borderRadius: '24px',
-              padding: '64px',
-              boxShadow: '0 1px 3px rgba(25, 36, 63, 0.04), 0 30px 60px -30px rgba(25, 36, 63, 0.12)',
-              marginBottom: '64px',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-end',
-                marginBottom: '48px',
-                flexWrap: 'wrap',
-                gap: '24px',
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: 'var(--font-inter-tight), system-ui, sans-serif',
-                  fontSize: '32px',
-                  fontWeight: 300,
-                  letterSpacing: '-0.025em',
-                  color: 'var(--navy-dark)',
-                  lineHeight: 1.15,
-                  maxWidth: '480px',
-                }}
-              >
-                Articles published vs. peer-reviewed studies, by month
-              </h3>
-              <div style={{ display: 'flex', gap: '24px', fontSize: '13px', fontWeight: 500 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--navy-med)' }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--light-blue)', display: 'inline-block' }} />
-                  Press &amp; coverage
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--navy-med)' }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--navy-dark)', display: 'inline-block' }} />
-                  Peer-reviewed
-                </div>
-              </div>
-            </div>
-
-            {/* TODO: replace with real data */}
-            <svg
-              viewBox="0 0 800 320"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              style={{ width: '100%', height: '320px' }}
-              aria-label="Chart showing press coverage vs peer-reviewed publications over the year"
-            >
-              <line x1="60" y1="40" x2="780" y2="40" stroke="#19243F" strokeOpacity="0.05" strokeWidth="1"/>
-              <line x1="60" y1="100" x2="780" y2="100" stroke="#19243F" strokeOpacity="0.05" strokeWidth="1"/>
-              <line x1="60" y1="160" x2="780" y2="160" stroke="#19243F" strokeOpacity="0.05" strokeWidth="1"/>
-              <line x1="60" y1="220" x2="780" y2="220" stroke="#19243F" strokeOpacity="0.05" strokeWidth="1"/>
-              <line x1="60" y1="280" x2="780" y2="280" stroke="#19243F" strokeOpacity="0.15" strokeWidth="1"/>
-              <text x="48" y="44" textAnchor="end" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">200</text>
-              <text x="48" y="104" textAnchor="end" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">150</text>
-              <text x="48" y="164" textAnchor="end" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">100</text>
-              <text x="48" y="224" textAnchor="end" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">50</text>
-              <text x="48" y="284" textAnchor="end" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">0</text>
-              <path d="M 80 200 L 140 165 L 200 130 L 260 110 L 320 100 L 380 75 L 440 90 L 500 60 L 560 70 L 620 50 L 680 65 L 740 45 L 740 280 L 80 280 Z" fill="#C4D1E8" fillOpacity="0.6"/>
-              <path d="M 80 200 L 140 165 L 200 130 L 260 110 L 320 100 L 380 75 L 440 90 L 500 60 L 560 70 L 620 50 L 680 65 L 740 45" fill="none" stroke="#C4D1E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M 80 265 L 140 260 L 200 252 L 260 248 L 320 245 L 380 238 L 440 240 L 500 232 L 560 235 L 620 228 L 680 230 L 740 225 L 740 280 L 80 280 Z" fill="#19243F" fillOpacity="0.92"/>
-              <path d="M 80 265 L 140 260 L 200 252 L 260 248 L 320 245 L 380 238 L 440 240 L 500 232 L 560 235 L 620 228 L 680 230 L 740 225" fill="none" stroke="#19243F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="80" cy="265" r="3" fill="#19243F"/>
-              <circle cx="200" cy="252" r="3" fill="#19243F"/>
-              <circle cx="320" cy="245" r="3" fill="#19243F"/>
-              <circle cx="440" cy="240" r="3" fill="#19243F"/>
-              <circle cx="560" cy="235" r="3" fill="#19243F"/>
-              <circle cx="680" cy="230" r="3" fill="#19243F"/>
-              <text x="80" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">Jan</text>
-              <text x="200" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">Mar</text>
-              <text x="320" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">May</text>
-              <text x="440" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">Jul</text>
-              <text x="560" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">Sep</text>
-              <text x="680" y="305" textAnchor="middle" fontFamily="var(--font-inter-tight), system-ui" fontSize="11" fill="#747F93" fontWeight="500">Nov</text>
-              <line x1="740" y1="45" x2="740" y2="225" stroke="#527FC1" strokeWidth="1" strokeDasharray="3,3" opacity="0.5"/>
-              <circle cx="740" cy="45" r="5" fill="#FFFDF3" stroke="#527FC1" strokeWidth="2"/>
-              <circle cx="740" cy="225" r="5" fill="#FFFDF3" stroke="#19243F" strokeWidth="2"/>
-            </svg>
-
-            <p
-              style={{
-                marginTop: '32px',
-                fontSize: '13px',
-                color: 'var(--navy-lite)',
-                lineHeight: 1.5,
-                maxWidth: '640px',
-              }}
-            >
-              <strong style={{ color: 'var(--navy-med)', fontWeight: 500 }}>Year over year, press coverage of psychedelic medicine has grown 4x.</strong>{' '}
-              Peer-reviewed publications have grown 1.2x. Psilosignal reads everything in the top line, but writes only about what is actually in the bottom one.{' '}
-              <span style={{ color: 'var(--navy-lite)' }}>Source: PubMed and Google News, 2026.</span>
+              In 2026, more than 1,800 articles will be published about psychedelic medicine. Most will be press releases dressed as journalism. A small fraction will move the science forward. We read everything. We write only about what matters.
             </p>
           </div>
         </div>
@@ -602,7 +503,7 @@ export default function HomePage() {
               <span className="gradient-text">One newsletter.</span>
             </h2>
             <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'var(--navy-med)' }}>
-              The psychedelic medicine space moves fast and gets reported badly. Psilosignal exists for the readers who cannot afford either problem.
+              The psychedelic medicine space moves fast and gets reported badly. The Rose Hill Review exists for the readers who cannot afford either problem.
             </p>
           </div>
 
@@ -618,15 +519,15 @@ export default function HomePage() {
               {
                 iconBg: 'linear-gradient(135deg, var(--sky-blue), var(--navy-med))',
                 tag: '02 / Investors & operators',
-                title: 'For capital allocators who hate noise.',
+                title: 'For investors and operators who need reliable signal.',
                 desc: 'LPs, family offices, and operators trying to separate credible early-stage opportunities from PR-driven promotion. We name names, cite sources, and flag what is actually moving.',
                 icon: <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>,
               },
               {
                 iconBg: 'linear-gradient(135deg, var(--sunshine), var(--lavender))',
                 tag: '03 / Researchers & clinicians',
-                title: 'For scientists with too many tabs open.',
-                desc: 'Neuroscientists, psychiatrists, and trial coordinators who want consolidated weekly updates on protocols, outcomes, and regulatory shifts. No more combing fifteen feeds.',
+                title: 'For researchers and clinicians who need consolidated coverage.',
+                desc: 'Neuroscientists, psychiatrists, and trial coordinators who want consolidated weekly updates on protocols, outcomes, and regulatory shifts — drawn from primary sources, not secondhand summaries.',
                 icon: <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="1.5"><path d="M9 2v6.5L4 12v8h16v-8l-5-3.5V2zM9 2h6"/></svg>,
               },
               {
@@ -668,7 +569,7 @@ export default function HomePage() {
             <div style={{ maxWidth: '600px' }}>
               <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '24px' }}>Recent issues</div>
               <h2 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontWeight: 200, letterSpacing: '-0.04em', lineHeight: 0.95, fontSize: 'clamp(40px, 5vw, 64px)', color: 'var(--navy-dark)' }}>
-                The latest from <span className="gradient-text">Psilosignal.</span>
+                The latest from <span className="gradient-text">Rose Hill Review.</span>
               </h2>
             </div>
             <a href="/archive" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 24px', border: '1px solid rgba(25, 36, 63, 0.15)', borderRadius: '100px', fontSize: '14px', fontWeight: 500, color: 'var(--navy-dark)', transition: 'all 0.2s ease' }} className="view-all-link">
@@ -758,7 +659,7 @@ export default function HomePage() {
               From the inboxes of <span className="gradient-text">people who&apos;d know.</span>
             </h2>
             <p style={{ fontSize: '18px', lineHeight: 1.55, color: 'var(--navy-med)' }}>
-              Researchers, investors, and patients sharing what Psilosignal actually does for their week.
+              Researchers, investors, and patients sharing what the Rose Hill Review does for their week.
             </p>
           </div>
 
@@ -772,7 +673,7 @@ export default function HomePage() {
               },
               {
                 // TODO: replace with real testimonial
-                quote: 'I run a fund focused on this space. Psilosignal is the first thing I read Tuesday morning. It is the only one I trust to flag a press release dressed up as a breakthrough.',
+                quote: 'I run a fund focused on this space. The Rose Hill Review is the first thing I read Tuesday morning. It is the only one I trust to flag a press release dressed up as a breakthrough.',
                 initials: 'MR', name: 'Marcus Reyes', role: 'Managing Partner, Life Sciences VC',
                 quoteColor: 'var(--sky-blue)', avatarBg: 'linear-gradient(135deg, var(--sky-blue), var(--navy-med))',
               },
@@ -817,7 +718,7 @@ export default function HomePage() {
               <div style={{ width: '100%', height: '100%', borderRadius: '18px', overflow: 'hidden', position: 'relative' }}>
                 <Image
                   src="/assets/domenic.jpg"
-                  alt="Domenic Suppa, editor of Psilosignal"
+                  alt="Domenic Suppa, editor of the Rose Hill Review"
                   fill
                   style={{ objectFit: 'cover' }}
                   sizes="(max-width: 1024px) 480px, 400px"
@@ -825,24 +726,24 @@ export default function HomePage() {
                 />
               </div>
               <div style={{ position: 'absolute', bottom: '24px', left: '24px', padding: '12px 20px', background: 'rgba(25, 36, 63, 0.85)', backdropFilter: 'blur(12px)', borderRadius: '100px', color: 'var(--white)', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                Editor &middot; Psilosignal
+                Editor &middot; Rose Hill Review
               </div>
             </div>
 
             <div>
-              <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '24px' }}>The editor</div>
+              <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '24px' }}>About</div>
               <h2 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontWeight: 200, letterSpacing: '-0.04em', lineHeight: 0.95, fontSize: 'clamp(40px, 4.5vw, 56px)', color: 'var(--navy-dark)', marginBottom: '32px' }}>
-                Written by <span className="gradient-text">Domenic Suppa.</span>
+                From <span className="gradient-text">Rose Hill Life Sciences.</span>
               </h2>
               <p style={{ fontSize: '17px', lineHeight: 1.65, color: 'var(--navy-med)', marginBottom: '20px' }}>
                 Domenic is the co-founder and Chief Operating Officer of Rose Hill Health Holdings, with 11+ years as a senior executive in operationally complex, highly regulated industries. His path into alternative medicine started in 2010 with a seed investment into Evolab, a Denver-based vertically integrated cannabis company, where he served as COO from 2013 to 2018 through the acquisition by Harvest Health and Recreation (HARV: CSE). He went on to lead manufacturing operations at Supreme Cannabis (CSE: FIRE), supported the BLISSCO acquisition, and has worked with national brands including KKE, Monogram, Native Sun, Terps, and Tilt.
               </p>
               <p style={{ fontSize: '17px', lineHeight: 1.65, color: 'var(--navy-med)', marginBottom: '20px' }}>
-                Psilosignal exists because he kept watching credible science get crowded out by hot takes, and credible companies get conflated with hype factories. Each Tuesday&apos;s issue is built from primary sources: peer-reviewed papers, regulatory filings, trial registries, and direct conversations with the researchers and clinicians shaping the field. The goal is not to be the loudest voice in psychedelic medicine. It is to be the one you trust when the next headline drops.
+                The Rose Hill Review was built because credible science kept getting crowded out by hot takes, and credible companies kept getting conflated with hype factories. Each issue is built from primary sources: peer-reviewed papers, regulatory filings, trial registries, and direct conversations with the researchers and clinicians shaping the field. The goal is not to be the loudest voice in psychedelic medicine. It is to be the one you trust when the next headline drops.
               </p>
               <div style={{ marginTop: '40px', paddingTop: '32px', borderTop: '1px solid rgba(25, 36, 63, 0.1)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="creds-grid">
                 {[
-                  { label: 'Co-founder, COO', value: 'Rose Hill Health Holdings' },
+                  { label: 'Co-founder, COO', value: 'Rose Hill Life Sciences' },
                   { label: 'Industry experience', value: '11+ years operations' },
                   { label: 'Connect', value: null, link: 'https://www.linkedin.com/in/domenic-suppa-19550316/' },
                 ].map((c) => (
@@ -947,7 +848,7 @@ export default function HomePage() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '20px', fontWeight: 500, letterSpacing: '-0.025em', color: 'var(--linen)', marginBottom: '16px' }}>
               <span className="nav-brand-mark" aria-hidden="true" />
-              <span>Psilosignal</span>
+              <span>Rose Hill Review</span>
             </div>
             <p style={{ fontSize: '14px', maxWidth: '320px', lineHeight: 1.6 }}>
               A weekly newsletter on psychedelic medicine. Published by Rose Hill Life Sciences.

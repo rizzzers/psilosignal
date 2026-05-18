@@ -5,7 +5,7 @@ import { getAllPosts } from '@/lib/blog'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Long-form analysis on psychedelic medicine: clinical trials, regulation, and industry credibility. Written by Domenic Suppa of Rose Hill Health Holdings.',
+    'Long-form analysis on psychedelic medicine: clinical trials, regulation, and industry credibility. Published by Rose Hill Life Sciences.',
 }
 
 const VISUAL_CLASSES = [
@@ -51,7 +51,7 @@ export default function BlogIndexPage() {
           }}
         >
           <span className="nav-brand-mark" aria-hidden="true" />
-          <span>Psilosignal</span>
+          <span>Rose Hill Review</span>
         </Link>
         <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
           <Link href="/#how" style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }}>
@@ -123,7 +123,7 @@ export default function BlogIndexPage() {
             maxWidth: '640px',
           }}
         >
-          Long-form analysis from Domenic Suppa on clinical trials, regulation, and the operators building credibly in psychedelic medicine.
+          Long-form analysis from Rose Hill Life Sciences on clinical trials, regulation, and the operators building credibly in psychedelic medicine.
         </p>
       </section>
 
@@ -301,7 +301,7 @@ export default function BlogIndexPage() {
         >
           <span>&copy; 2026 Rose Hill Life Sciences</span>
           <Link href="/" style={{ color: 'rgba(239, 237, 228, 0.6)' }}>
-            Back to Psilosignal
+            Back to Rose Hill Review
           </Link>
         </div>
       </footer>

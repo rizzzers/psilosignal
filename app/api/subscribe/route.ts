@@ -33,13 +33,13 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
-      from: 'Psilosignal <onboarding@resend.dev>',
+      from: 'Rose Hill Review <onboarding@resend.dev>',
       to: 'ryan@ryanestes.info',
-      subject: `New Psilosignal subscriber: ${cleanName}`,
+      subject: `New Rose Hill Review subscriber: ${cleanName}`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px;">
           <h2 style="font-size: 20px; font-weight: 600; color: #19243F; margin-bottom: 16px;">
-            New subscriber on Psilosignal
+            New subscriber on Rose Hill Review
           </h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
             </tr>
           </table>
           <p style="margin-top: 24px; font-size: 13px; color: #747F93;">
-            Submitted via psilosignal.com
+            Submitted via rosehillreview.com
           </p>
         </div>
       `,

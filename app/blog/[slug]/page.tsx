@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Rose Hill Health Holdings',
+      name: 'Rose Hill Life Sciences',
       url: 'https://rosehill.life',
     },
     datePublished: post.publishedDate,
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
           }}
         >
           <span className="nav-brand-mark" aria-hidden="true" />
-          <span>Psilosignal</span>
+          <span>Rose Hill Review</span>
         </Link>
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <Link
@@ -257,7 +257,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.author}
               </div>
               <div style={{ fontSize: '13px', color: 'var(--navy-lite)' }}>
-                COO, Rose Hill Health Holdings
+                Rose Hill Life Sciences
               </div>
             </div>
           </div>
@@ -346,7 +346,7 @@ export default async function BlogPostPage({ params }: Props) {
               }}
             >
               {/* TODO: update subscriber count */}
-              Join 8,400+ readers who rely on Psilosignal for honest, cited coverage of psychedelic medicine.
+              Join 8,400+ readers who rely on the Rose Hill Review for honest, cited coverage of psychedelic medicine.
             </p>
             <Link
               href="/#subscribe"
@@ -409,7 +409,7 @@ export default async function BlogPostPage({ params }: Props) {
         >
           <span>&copy; 2026 Rose Hill Life Sciences</span>
           <Link href="/" style={{ color: 'rgba(239, 237, 228, 0.6)' }}>
-            Back to Psilosignal
+            Back to Rose Hill Review
           </Link>
         </div>
       </footer>

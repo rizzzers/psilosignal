@@ -18,11 +18,11 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   metadataBase: new URL('https://psilosignal.com'),
   title: {
-    default: 'Psilosignal - Weekly clarity on psychedelic medicine',
-    template: '%s | Psilosignal',
+    default: 'Rose Hill Review — A Psychedelic Brief',
+    template: '%s | Rose Hill Review',
   },
   description:
-    'A weekly newsletter on the science, regulation, and human story of psychedelic medicine. Written by Domenic Suppa of Rose Hill Health Holdings. Every Tuesday.',
+    'A weekly brief on the science, regulation, and human story of psychedelic medicine. Published by Rose Hill Life Sciences. Every Tuesday.',
   keywords: [
     'psychedelic medicine',
     'psilocybin',
@@ -31,34 +31,35 @@ export const metadata: Metadata = {
     'clinical trials',
     'FDA',
     'newsletter',
-    'Domenic Suppa',
-    'Rose Hill Health Holdings',
+    'Rose Hill Life Sciences',
+    'Rose Hill Review',
+    'psychedelic brief',
   ],
-  authors: [{ name: 'Domenic Suppa', url: 'https://psilosignal.com' }],
-  creator: 'Domenic Suppa',
-  publisher: 'Rose Hill Health Holdings',
+  authors: [{ name: 'Rose Hill Life Sciences', url: 'https://psilosignal.com' }],
+  creator: 'Rose Hill Life Sciences',
+  publisher: 'Rose Hill Life Sciences',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://psilosignal.com',
-    siteName: 'Psilosignal',
-    title: 'Psilosignal - Weekly clarity on psychedelic medicine',
+    siteName: 'Rose Hill Review',
+    title: 'Rose Hill Review — A Psychedelic Brief',
     description:
-      'A weekly newsletter on the science, regulation, and human story of psychedelic medicine. Written by Domenic Suppa of Rose Hill Health Holdings.',
+      'A weekly brief on the science, regulation, and human story of psychedelic medicine. Published by Rose Hill Life Sciences.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Psilosignal newsletter',
+        alt: 'Rose Hill Review newsletter',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Psilosignal - Weekly clarity on psychedelic medicine',
+    title: 'Rose Hill Review — A Psychedelic Brief',
     description:
-      'A weekly newsletter on the science, regulation, and human story of psychedelic medicine. Written by Domenic Suppa of Rose Hill Health Holdings.',
+      'A weekly brief on the science, regulation, and human story of psychedelic medicine. Published by Rose Hill Life Sciences.',
     images: ['/og-image.png'],
     creator: '@RHLifeSciences',
   },
@@ -78,7 +79,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Rose Hill Health Holdings',
+  name: 'Rose Hill Life Sciences',
   url: 'https://rosehill.life',
   description:
     'An operator in the emerging psychedelic medicine space, building credible infrastructure for the field.',
@@ -88,19 +89,17 @@ const organizationSchema = {
   ],
 }
 
-const personSchema = {
+const newsletterSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Domenic Suppa',
-  jobTitle: 'Chief Operating Officer',
-  worksFor: {
+  '@type': 'Periodical',
+  name: 'Rose Hill Review',
+  description: 'A weekly brief on the science, regulation, and human story of psychedelic medicine.',
+  publisher: {
     '@type': 'Organization',
-    name: 'Rose Hill Health Holdings',
+    name: 'Rose Hill Life Sciences',
+    url: 'https://rosehill.life',
   },
   url: 'https://psilosignal.com',
-  sameAs: ['https://www.linkedin.com/in/domenic-suppa-19550316/'],
-  description:
-    'Co-founder and COO of Rose Hill Health Holdings. Author of Psilosignal, a weekly newsletter on psychedelic medicine.',
 }
 
 export default function RootLayout({
@@ -126,7 +125,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(newsletterSchema) }}
         />
       </head>
       <body
