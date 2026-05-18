@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     await resend.emails.send({
       from: 'Rose Hill Review <onboarding@resend.dev>',
-      to: 'ryan@ryanestes.info',
+      to: ['ryan@ryanestes.info', 'fernanda@ryanestes.info'],
       subject: `New Rose Hill Review subscriber: ${cleanName}`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px;">

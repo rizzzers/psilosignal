@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 
     await resend.emails.send({
       from: 'Rose Hill Review <onboarding@resend.dev>',
-      to: 'ryan@ryanestes.info',
+      to: ['ryan@ryanestes.info', 'fernanda@ryanestes.info'],
       subject: `[${inquiryLabel}] Contact from ${cleanName}`,
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px;">
