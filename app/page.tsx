@@ -515,14 +515,14 @@ export default function HomePage() {
                 iconBg: 'linear-gradient(135deg, var(--lavender), var(--sky-blue))',
                 tag: '01 / Patients & advocates',
                 title: 'For people navigating real conditions.',
-                desc: "Veterans, those exploring options for treatment-resistant depression, PTSD, stroke recovery, plus the people supporting them. Get clarity on what is available, what is coming, and what is still hype.",
+                desc: "For people exploring options for treatment-resistant depression, PTSD, stroke recovery, and other conditions, plus the people supporting them. Get clarity on what is available, what is coming, and what is still hype.",
                 icon: <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
               },
               {
                 iconBg: 'linear-gradient(135deg, var(--sky-blue), var(--navy-med))',
                 tag: '02 / Investors & operators',
-                title: 'For investors and operators who need reliable signal.',
-                desc: 'LPs, family offices, and operators trying to separate credible early-stage opportunities from PR-driven promotion. We name names, cite sources, and flag what is actually moving.',
+                title: 'For investors, venture firms, and operators who need reliable signal.',
+                desc: 'LPs, family offices, VCs, and operators trying to separate credible early-stage opportunities from PR-driven promotion. We name names, cite sources, and flag what is actually moving.',
                 icon: <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>,
               },
               {
