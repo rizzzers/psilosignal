@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getAllSlugs()
 
   const blogPosts = slugs.map((slug) => ({
-    url: `https://psilosignal.com/blog/${slug}`,
+    url: `https://www.rosehillreview.com/blog/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -13,13 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: 'https://psilosignal.com',
+      url: 'https://www.rosehillreview.com',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: 'https://psilosignal.com/blog',
+      url: 'https://www.rosehillreview.com/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,

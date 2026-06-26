@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     author: {
       '@type': 'Person',
       name: post.author,
-      url: 'https://psilosignal.com',
+      url: 'https://www.rosehillreview.com',
     },
     publisher: {
       '@type': 'Organization',
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: 'https://rosehill.life',
     },
     datePublished: post.publishedDate,
-    url: `https://psilosignal.com/blog/${post.slug}`,
+    url: `https://www.rosehillreview.com/blog/${post.slug}`,
   }
 
   return {

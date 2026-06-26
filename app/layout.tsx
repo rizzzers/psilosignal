@@ -16,7 +16,7 @@ const interTight = Inter_Tight({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://psilosignal.com'),
+  metadataBase: new URL('https://www.rosehillreview.com'),
   title: {
     default: 'Rose Hill Review — A Psychedelic Brief',
     template: '%s | Rose Hill Review',
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     'Rose Hill Review',
     'psychedelic brief',
   ],
-  authors: [{ name: 'Rose Hill Life Sciences', url: 'https://psilosignal.com' }],
+  authors: [{ name: 'Rose Hill Life Sciences', url: 'https://www.rosehillreview.com' }],
   creator: 'Rose Hill Life Sciences',
   publisher: 'Rose Hill Life Sciences',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://psilosignal.com',
+    url: 'https://www.rosehillreview.com',
     siteName: 'Rose Hill Review',
     title: 'Rose Hill Review — A Psychedelic Brief',
     description:
@@ -99,7 +99,7 @@ const newsletterSchema = {
     name: 'Rose Hill Life Sciences',
     url: 'https://rosehill.life',
   },
-  url: 'https://psilosignal.com',
+  url: 'https://www.rosehillreview.com',
 }
 
 export default function RootLayout({
