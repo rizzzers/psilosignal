@@ -173,8 +173,7 @@ export default async function HomePage() {
               color: 'var(--navy-lite)',
             }}
           >
-            {/* TODO: update subscriber count */}
-            Join <strong style={{ color: 'var(--navy-dark)', fontWeight: 500 }}>8,400+ readers</strong> &middot; One email per week &middot; Unsubscribe anytime
+            One email per week &middot; Unsubscribe anytime
           </div>
         </div>
 
@@ -213,8 +212,7 @@ export default async function HomePage() {
                   marginBottom: '28px',
                 }}
               >
-                {/* TODO: update Vol. 047 issue number placeholder */}
-                This week &middot; Vol. 047
+                Latest issue
               </div>
               <div
                 style={{
@@ -228,7 +226,7 @@ export default async function HomePage() {
                   marginBottom: '24px',
                 }}
               >
-                The Compass Phase 3 readout, without the spin: what 941 patients actually showed us.
+                {featuredIssue?.title ?? 'Clinical science, decoded.'}
               </div>
               <div
                 style={{
@@ -238,7 +236,7 @@ export default async function HomePage() {
                   letterSpacing: '0.04em',
                 }}
               >
-                7 min read &middot; Tuesday, May 5
+                {featuredIssue ? `${featuredIssue.readTime} · ${new Date(featuredIssue.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}` : 'Every Tuesday'}
               </div>
             </div>
           </div>
@@ -770,8 +768,7 @@ export default async function HomePage() {
         <div className="cta-bg" aria-hidden="true" />
         <div style={{ position: 'relative', maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--sunshine)', marginBottom: '24px' }}>
-            {/* TODO: update subscriber count */}
-            Join 8,400+ readers
+            The Rose Hill Review
           </div>
           <h2 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontWeight: 200, letterSpacing: '-0.04em', lineHeight: 0.95, fontSize: 'clamp(48px, 6.5vw, 88px)', color: 'var(--white)', marginBottom: '32px' }}>
             One email.<br />
