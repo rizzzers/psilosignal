@@ -26,6 +26,7 @@ export interface BlogPostMeta {
 }
 
 export function getAllPosts(): BlogPostMeta[] {
+  if (!fs.existsSync(BLOG_DIR)) return []
   const files = fs.readdirSync(BLOG_DIR)
   const posts = files
     .filter((f) => f.endsWith('.mdx'))
@@ -70,6 +71,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
 }
 
 export function getAllSlugs(): string[] {
+  if (!fs.existsSync(BLOG_DIR)) return []
   const files = fs.readdirSync(BLOG_DIR)
   return files.filter((f) => f.endsWith('.mdx')).map((f) => f.replace(/\.mdx$/, ''))
 }
