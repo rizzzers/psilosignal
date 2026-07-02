@@ -1,8 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SignupForm from './components/SignupForm'
+import { getAllIssues } from '@/lib/issues'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const issues = getAllIssues()
+  const featuredIssue = issues[0] ?? null
+  const gridIssues = issues.slice(1, 4)
+
   return (
     <>
       {/* ===== NAV ===== */}
@@ -574,74 +579,67 @@ export default function HomePage() {
                 The latest from <span className="gradient-text">Rose Hill Review.</span>
               </h2>
             </div>
-            <a href="/archive" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 24px', border: '1px solid rgba(25, 36, 63, 0.15)', borderRadius: '100px', fontSize: '14px', fontWeight: 500, color: 'var(--navy-dark)', transition: 'all 0.2s ease' }} className="view-all-link">
-              {/* TODO: update archive count */}
-              Browse all 47 issues
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
           </div>
 
           {/* Featured */}
-          <div style={{ marginBottom: '32px' }}>
-            <article className="issue-card-large" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', background: 'var(--linen)', borderRadius: '24px', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-              <div style={{ padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '480px' }}>
-                <div>
-                  <div style={{ display: 'flex', gap: '12px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '32px' }}>
-                    <span style={{ color: 'var(--sky-blue)' }}>Featured &middot; Clinical Trials</span>
-                    <span>&middot;</span>
-                    <span>May 5, 2026</span>
+          {featuredIssue && (
+            <div style={{ marginBottom: '32px' }}>
+              <Link href={`/issues/${featuredIssue.slug}`} style={{ textDecoration: 'none' }}>
+                <article className="issue-card-large" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', background: 'var(--linen)', borderRadius: '24px', overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+                  <div style={{ padding: '64px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '480px' }}>
+                    <div>
+                      <div style={{ display: 'flex', gap: '12px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '32px' }}>
+                        <span style={{ color: 'var(--sky-blue)' }}>Latest &middot; {featuredIssue.category}</span>
+                        <span>&middot;</span>
+                        <span>{new Date(featuredIssue.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                      </div>
+                      <h3 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, letterSpacing: '-0.025em', color: 'var(--navy-dark)', lineHeight: 1.1, marginBottom: '20px' }}>
+                        {featuredIssue.title}
+                      </h3>
+                      <p style={{ fontSize: '16px', lineHeight: 1.6, color: 'var(--navy-med)', marginBottom: '32px' }}>
+                        {featuredIssue.subtitle}
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px', color: 'var(--navy-lite)' }}>
+                      <span>{featuredIssue.readTime}</span>
+                      <div className="read-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="white" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </div>
                   </div>
-                  <h3 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, letterSpacing: '-0.025em', color: 'var(--navy-dark)', lineHeight: 1.1, marginBottom: '20px' }}>
-                    The COMP360 Phase 3 readout, <span className="gradient-text">without the spin.</span>
-                  </h3>
-                  <p style={{ fontSize: '16px', lineHeight: 1.6, color: 'var(--navy-med)', marginBottom: '32px' }}>
-                    Compass Pathways&apos; Phase 3 data for treatment-resistant depression dropped this week. Headlines called it a breakthrough. The actual numbers tell a more interesting, more honest story. Here is what 941 patients across 32 sites actually showed us, plus the three caveats every investor and clinician needs to know.
-                  </p>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '14px', color: 'var(--navy-lite)' }}>
-                  <span>7 min read</span>
-                  <div className="read-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="white" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <div className="issue-card-large-visual">
+                    <div className="grain-strong" aria-hidden="true" />
                   </div>
-                </div>
-              </div>
-              <div className="issue-card-large-visual">
-                <div className="grain-strong" aria-hidden="true" />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '56px', color: 'var(--white)' }}>
-                  <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', opacity: 0.8, marginBottom: '8px' }}>This week</div>
-                  {/* TODO: update Vol. 047 issue number placeholder */}
-                  <div style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: 'clamp(48px, 8vw, 96px)', fontWeight: 200, letterSpacing: '-0.04em', lineHeight: 1 }}>047</div>
-                </div>
-              </div>
-            </article>
-          </div>
+                </article>
+              </Link>
+            </div>
+          )}
 
           {/* Issue grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="issues-grid">
-            {[
-              { cat: 'Regulatory', vol: 'Vol. 046', title: "FDA's new psychedelic guidance, decoded.", date: 'Apr 28', time: '5 min' },
-              { cat: 'Patient story', vol: 'Vol. 045', title: 'A veteran, a trial, and what came after.', date: 'Apr 21', time: '6 min' },
-              { cat: 'Research', vol: 'Vol. 044', title: "The neuroplasticity paper everyone's misreading.", date: 'Apr 14', time: '4 min' },
-            ].map((issue) => (
-              <article key={issue.vol} className="issue-card" style={{ background: 'var(--linen)', borderRadius: '20px', padding: '36px', cursor: 'pointer', transition: 'transform 0.3s ease', display: 'flex', flexDirection: 'column', minHeight: '280px' }}>
-                <div style={{ display: 'flex', gap: '12px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '32px' }}>
-                  {/* TODO: placeholder Vol. numbers */}
-                  <span style={{ color: 'var(--sky-blue)' }}>{issue.cat}</span>
-                  <span>&middot;</span>
-                  <span>{issue.vol}</span>
-                </div>
-                <h3 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '22px', fontWeight: 400, letterSpacing: '-0.02em', color: 'var(--navy-dark)', lineHeight: 1.2, marginBottom: '24px', flex: 1 }}>
-                  {issue.title}
-                </h3>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--navy-lite)', fontWeight: 500 }}>
-                  <span>{issue.date} &middot; {issue.time}</span>
-                  <div className="arrow-circle">
-                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="var(--navy-med)" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          {gridIssues.length > 0 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }} className="issues-grid">
+              {gridIssues.map((issue) => (
+                <Link key={issue.slug} href={`/issues/${issue.slug}`} style={{ textDecoration: 'none' }}>
+                  <article className="issue-card" style={{ background: 'var(--linen)', borderRadius: '20px', padding: '36px', cursor: 'pointer', transition: 'transform 0.3s ease', display: 'flex', flexDirection: 'column', minHeight: '280px' }}>
+                    <div style={{ display: 'flex', gap: '12px', fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--navy-lite)', marginBottom: '32px' }}>
+                      <span style={{ color: 'var(--sky-blue)' }}>{issue.category}</span>
+                      <span>&middot;</span>
+                      <span>Issue #{issue.issueNumber}</span>
+                    </div>
+                    <h3 style={{ fontFamily: 'var(--font-inter-tight), system-ui, sans-serif', fontSize: '22px', fontWeight: 400, letterSpacing: '-0.02em', color: 'var(--navy-dark)', lineHeight: 1.2, marginBottom: '24px', flex: 1 }}>
+                      {issue.title}
+                    </h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--navy-lite)', fontWeight: 500 }}>
+                      <span>{new Date(issue.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} &middot; {issue.readTime}</span>
+                      <div className="arrow-circle">
+                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="var(--navy-med)" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
         <style>{`
           @media (max-width: 1024px) { .issues-grid { grid-template-columns: 1fr 1fr !important; } .issue-card-large { grid-template-columns: 1fr !important; } }
