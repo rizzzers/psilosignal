@@ -217,8 +217,8 @@ export default async function IssuePage({ params }: Props) {
             }}
           >
             <Image
-              src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/user/profile_picture/74e0cf8f-bc36-4e15-a523-03d659cdaa7a/thumb_domenic.jpg"
-              alt="Domenic Suppa"
+              src={issue.authorHeadshot}
+              alt={issue.author}
               width={42}
               height={42}
               style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
@@ -228,7 +228,7 @@ export default async function IssuePage({ params }: Props) {
                 {issue.author}
               </div>
               <div style={{ fontSize: '13px', color: 'var(--navy-lite)' }}>
-                Co-founder, Rose Hill Life Sciences
+                {issue.authorRole}
               </div>
             </div>
           </div>
@@ -321,8 +321,8 @@ export default async function IssuePage({ params }: Props) {
             }}
           >
             <Image
-              src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80,width=1920,height=3840/uploads/asset/file/dcf21ac8-39c5-4bde-a9d2-6dd111d3e9ae/domenic.webp"
-              alt="Domenic Suppa"
+              src={issue.authorImage}
+              alt={issue.author}
               width={80}
               height={80}
               style={{ borderRadius: '12px', objectFit: 'cover', flexShrink: 0 }}
@@ -337,7 +337,7 @@ export default async function IssuePage({ params }: Props) {
                   marginBottom: '4px',
                 }}
               >
-                Domenic Suppa
+                {issue.author}
               </div>
               <div
                 style={{
@@ -346,10 +346,10 @@ export default async function IssuePage({ params }: Props) {
                   marginBottom: '12px',
                 }}
               >
-                Co-founder, Rose Hill Life Sciences
+                {issue.authorRole}
               </div>
               <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'var(--navy-med)', margin: 0 }}>
-                Advancing the development of novel psychedelic-based therapeutics.
+                {issue.authorBio}
               </p>
             </div>
           </div>

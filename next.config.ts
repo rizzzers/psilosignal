@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'media.beehiiv.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'embed.filekitcdn.com',
+      },
     ],
   },
 };
