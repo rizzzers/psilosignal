@@ -505,6 +505,7 @@ export default async function IssuePage({ params }: Props) {
         .prose-issue li { font-size: 17px; line-height: 1.7; color: var(--navy-med); margin-bottom: 12px; padding-left: 0; }
         .prose-issue em { color: var(--navy-lite); font-style: italic; font-size: 14px; }
         .prose-issue sup { font-size: 11px; color: var(--sky-blue); }
+        .prose-issue .signature-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin: 8px 0; display: block; }
       `}</style>
     </>
   )

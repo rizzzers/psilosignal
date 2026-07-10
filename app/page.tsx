@@ -7,6 +7,8 @@ export default async function HomePage() {
   const issues = getAllIssues()
   const featuredIssue = issues[0] ?? null
   const gridIssues = issues.slice(1, 4)
+  const latestIssueNumber = Math.max(0, ...issues.map((issue) => parseInt(issue.issueNumber, 10) || 0))
+  const nextVolume = String(latestIssueNumber + 1).padStart(3, '0')
 
   return (
     <>
@@ -776,7 +778,7 @@ export default async function HomePage() {
             <span className="gradient-text">Worth the open.</span>
           </h2>
           <p style={{ fontSize: '19px', color: 'rgba(255, 253, 243, 0.7)', marginBottom: '48px' }}>
-            The next issue ships in five days. Get on the list and start with Vol. 048.
+            The next issue ships in five days. Get on the list and start with Vol. {nextVolume}.
           </p>
           <SignupForm variant="cta" />
         </div>
