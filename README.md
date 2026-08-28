@@ -46,7 +46,7 @@ In production on Vercel, add these under Project Settings > Environment Variable
 3. Add the key as `RESEND_API_KEY` in `.env.local` (local) or Vercel env vars (production)
 4. To send from a custom domain (e.g. `hello@psilosignal.com`), add and verify your domain in Resend's Domains section, then update the `from` address in `app/api/subscribe/route.ts`
 
-The subscribe API route (`/api/subscribe`) sends a notification email to `ryan@ryanestes.info` whenever someone submits the signup form.
+The subscribe API route (`/api/subscribe`) sends a notification email to `ryan@inboxalchemy.co` (cc: `fernanda@inboxalchemy.co`, `marie@inboxalchemy.co`) whenever someone submits the signup form.
 
 ---
 
