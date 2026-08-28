@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     // Initialize Resend lazily so missing env var doesn't crash at module load
     const resend = new Resend(process.env.RESEND_API_KEY)
 
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: 'Rose Hill Review <onboarding@resend.dev>',
       to: ['ryan@inboxalchemy.co'],
       cc: ['fernanda@inboxalchemy.co', 'marie@inboxalchemy.co'],
@@ -59,11 +59,19 @@ export async function POST(request: NextRequest) {
       `,
     })
 
+    if (result.error) {
+      console.error('Subscribe error (Resend API):', result.error)
+      return NextResponse.json(
+        { error: 'Something went wrong. Please try again.', debug: result.error },
+        { status: 502 }
+      )
+    }
+
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
     console.error('Subscribe error:', error)
     return NextResponse.json(
-      { error: 'Something went wrong. Please try again.' },
+      { error: 'Something went wrong. Please try again.', debug: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }
