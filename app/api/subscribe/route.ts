@@ -29,11 +29,36 @@ export async function POST(request: NextRequest) {
     const cleanName = firstName.trim()
     const cleanEmail = email.trim().toLowerCase()
 
+    // Actually subscribe them on Kit (this previously only fired the internal
+    // notification below and never enrolled the visitor at all).
+    const kitApiKey = process.env.KIT_API_KEY
+    const kitFormId = process.env.KIT_FORM_ID ?? '9651637' // "Newsletter site" form
+    if (kitApiKey) {
+      const kitRes = await fetch(`https://api.kit.com/v4/forms/${kitFormId}/subscribers`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Kit-Api-Key': kitApiKey,
+        },
+        body: JSON.stringify({ email_address: cleanEmail, first_name: cleanName }),
+      })
+      if (!kitRes.ok) {
+        const errBody = await kitRes.text()
+        console.error('Kit subscribe error:', kitRes.status, errBody)
+        return NextResponse.json(
+          { error: 'Something went wrong. Please try again.' },
+          { status: 502 }
+        )
+      }
+    } else {
+      console.error('KIT_API_KEY is not set; skipping actual Kit subscription.')
+    }
+
     // Initialize Resend lazily so missing env var doesn't crash at module load
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const result = await resend.emails.send({
-      from: 'Rose Hill Review <onboarding@resend.dev>',
+      from: 'Rose Hill Review <notifications@ryanestes.info>',
       to: ['ryan@inboxalchemy.co'],
       cc: ['fernanda@inboxalchemy.co', 'marie@inboxalchemy.co'],
       subject: `New Rose Hill Review subscriber: ${cleanName}`,
