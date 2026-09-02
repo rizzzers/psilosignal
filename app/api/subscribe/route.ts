@@ -31,16 +31,21 @@ export async function POST(request: NextRequest) {
 
     // Actually subscribe them on Kit (this previously only fired the internal
     // notification below and never enrolled the visitor at all).
+    //
+    // Uses the generic /v4/subscribers endpoint rather than
+    // /v4/forms/{id}/subscribers: the latter 404s ("Form ID not found") for
+    // both forms on this account because they're "embed"-type forms, which
+    // Kit's API does not support subscribing to directly. Creating the
+    // subscriber account-wide is the reliable path regardless of form type.
     const kitApiKey = process.env.KIT_API_KEY
-    const kitFormId = process.env.KIT_FORM_ID ?? '9651637' // "Newsletter site" form
     if (kitApiKey) {
-      const kitRes = await fetch(`https://api.kit.com/v4/forms/${kitFormId}/subscribers`, {
+      const kitRes = await fetch('https://api.kit.com/v4/subscribers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Kit-Api-Key': kitApiKey,
         },
-        body: JSON.stringify({ email_address: cleanEmail, first_name: cleanName }),
+        body: JSON.stringify({ email_address: cleanEmail, first_name: cleanName, state: 'active' }),
       })
       if (!kitRes.ok) {
         const errBody = await kitRes.text()
