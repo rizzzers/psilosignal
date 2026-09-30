@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
     // both forms on this account because they're "embed"-type forms, which
     // Kit's API does not support subscribing to directly. Creating the
     // subscriber account-wide is the reliable path regardless of form type.
+    // A Kit failure must never block the team notification below, so record it
+    // and report it in the email instead of returning early.
+    let kitStatus = 'Added to Kit'
     const kitApiKey = process.env.KIT_API_KEY
     if (kitApiKey) {
       const kitRes = await fetch('https://api.kit.com/v4/subscribers', {
@@ -50,13 +53,11 @@ export async function POST(request: NextRequest) {
       if (!kitRes.ok) {
         const errBody = await kitRes.text()
         console.error('Kit subscribe error:', kitRes.status, errBody)
-        return NextResponse.json(
-          { error: 'Something went wrong. Please try again.' },
-          { status: 502 }
-        )
+        kitStatus = `NOT added to Kit (Kit returned ${kitRes.status}); add manually if valid`
       }
     } else {
       console.error('KIT_API_KEY is not set; skipping actual Kit subscription.')
+      kitStatus = 'NOT added to Kit (KIT_API_KEY not set)'
     }
 
     // Initialize Resend lazily so missing env var doesn't crash at module load
@@ -79,8 +80,12 @@ export async function POST(request: NextRequest) {
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanName}</td>
             </tr>
             <tr>
-              <td style="padding: 12px 0; color: #747F93; font-size: 14px;">Email</td>
-              <td style="padding: 12px 0; color: #19243F; font-size: 14px; font-weight: 500;">${cleanEmail}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px;">Email</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanEmail}</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 0; color: #747F93; font-size: 14px;">Kit</td>
+              <td style="padding: 12px 0; color: #19243F; font-size: 14px;">${kitStatus}</td>
             </tr>
           </table>
           <p style="margin-top: 24px; font-size: 13px; color: #747F93;">
