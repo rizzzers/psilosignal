@@ -63,10 +63,11 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const result = await resend.emails.send({
-      from: 'Rose Hill Review <notifications@ryanestes.info>',
+      from: 'Rose Hill Life Sciences <notifications@ryanestes.info>',
       to: ['ryan@inboxalchemy.co'],
-      cc: ['fernanda@inboxalchemy.co', 'marie@inboxalchemy.co'],
-      subject: `New Rose Hill Review subscriber: ${cleanName}`,
+      // newsletter@rosehillreview.com is the client's newsletter login, so they get a copy too.
+      cc: ['fernanda@inboxalchemy.co', 'marie@inboxalchemy.co', 'newsletter@rosehillreview.com'],
+      subject: 'Rose Hill Review - New Subscriber',
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 480px; margin: 0 auto; padding: 32px 24px;">
           <h2 style="font-size: 20px; font-weight: 600; color: #19243F; margin-bottom: 16px;">
