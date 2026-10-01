@@ -6,7 +6,7 @@ import { getAllIssues } from '@/lib/issues'
 export default async function HomePage() {
   const issues = getAllIssues()
   const featuredIssue = issues[0] ?? null
-  const gridIssues = issues.slice(1, 4)
+  const gridIssues = issues.slice(1, 7)
   const latestIssueNumber = Math.max(0, ...issues.map((issue) => parseInt(issue.issueNumber, 10) || 0))
   const nextVolume = String(latestIssueNumber + 1).padStart(3, '0')
 
@@ -579,6 +579,12 @@ export default async function HomePage() {
                 The latest from <span className="gradient-text">Rose Hill Review.</span>
               </h2>
             </div>
+            {issues.length > 1 && (
+              <Link href="/archive" className="view-all-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '14px 26px', border: '1px solid rgba(25, 36, 63, 0.18)', borderRadius: '100px', fontSize: '14px', fontWeight: 500, color: 'var(--navy-dark)', textDecoration: 'none', transition: 'all 0.3s ease', whiteSpace: 'nowrap' }}>
+                View all {issues.length} issues
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="currentColor" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            )}
           </div>
 
           {/* Featured */}
@@ -638,6 +644,15 @@ export default async function HomePage() {
                   </article>
                 </Link>
               ))}
+            </div>
+          )}
+
+          {issues.length > gridIssues.length + 1 && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+              <Link href="/archive" className="view-all-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 32px', background: 'var(--linen)', border: '1px solid rgba(25, 36, 63, 0.12)', borderRadius: '100px', fontSize: '15px', fontWeight: 500, color: 'var(--navy-dark)', textDecoration: 'none', transition: 'all 0.3s ease' }}>
+                Browse the full archive
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="currentColor" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
             </div>
           )}
         </div>
