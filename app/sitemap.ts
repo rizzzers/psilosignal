@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs } from '@/lib/blog'
+import { getAllIssues } from '@/lib/issues'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getAllSlugs()
@@ -9,6 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
+  }))
+
+  const issues = getAllIssues().map((issue) => ({
+    url: `https://www.rosehillreview.com/issues/${issue.slug}`,
+    lastModified: new Date(issue.publishedDate),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }))
 
   return [
@@ -24,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: 'https://www.rosehillreview.com/archive',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    ...issues,
     ...blogPosts,
   ]
 }

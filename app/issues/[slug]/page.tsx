@@ -86,7 +86,7 @@ export default async function IssuePage({ params }: Props) {
         </Link>
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <Link
-            href="/#issues"
+            href="/archive"
             style={{ fontSize: '14px', fontWeight: 500, color: 'var(--navy-med)' }}
           >
             All issues
