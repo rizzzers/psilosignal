@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { getAllIssues } from '@/lib/issues'
 
 export const metadata: Metadata = {
-  title: 'Full archive | Rose Hill Review',
+  title: 'Full archive',
   description:
     'Every issue of the Rose Hill Review, the weekly psychedelic medicine brief from Rose Hill Life Sciences.',
 }
