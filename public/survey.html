@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reader Survey | Rose Hill Life Sciences</title>
+<meta name="description" content="Five quick questions to help shape the Rose Hill Life Sciences newsletter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@400;500&display=swap">
+<style>
+/* Layout: the Rose Hill newsletter card system: soft stone cards on cream, a split hero card with a periwinkle-to-gold gradient panel. */
+:root {
+  --bg: #FCFCF5;
+  --card: #EDECE6;
+  --ink: #1E2236;
+  --muted: #6B6F7D;
+  --line: #DAD9D1;
+  --accent: #6C7DC2;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DFE1EE;
+  --grad: radial-gradient(60% 50% at 80% 78%, #DCC48E 0%, rgba(220,196,142,0) 70%),
+          radial-gradient(55% 45% at 30% 20%, #ADA2D2 0%, rgba(173,162,210,0) 70%),
+          linear-gradient(150deg, #9C9BD0 0%, #8C93CB 45%, #B9AEB6 100%);
+  --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12131A; --card: #1D1F28; --ink: #ECEDF3; --muted: #9A9EAD; --line: #2C2F3B;
+    --accent: #95A3E0; --accent-ink: #12131A; --accent-soft: #2A2E45; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12131A; --card: #1D1F28; --ink: #ECEDF3; --muted: #9A9EAD; --line: #2C2F3B;
+  --accent: #95A3E0; --accent-ink: #12131A; --accent-soft: #2A2E45; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.55;
+  margin: 0; padding: 40px 16px 56px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 20px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-inline: 4px; }
+.label { font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.label .dim { color: var(--muted); }
+.label .dot { color: var(--muted); margin: 0 8px; }
+.tabs { display: flex; gap: 6px; }
+.tabs button {
+  font: 500 13px var(--font-body); background: none; border: 1px solid var(--line); color: var(--muted);
+  padding: 6px 14px; border-radius: 999px; cursor: pointer;
+}
+.tabs button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.card {
+  background: var(--card); border-radius: 22px; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); min-height: 480px;
+}
+.card.wide { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+.card.wide .panel { display: none; }
+.content { padding: 56px 64px 48px; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.panel { background: var(--grad); position: relative; min-height: 180px; }
+.panel span {
+  position: absolute; left: 36px; bottom: 28px; font: 400 clamp(56px, 9vw, 112px)/1 var(--font-display);
+  letter-spacing: -.04em; color: rgba(255,255,255,.82); font-variant-numeric: tabular-nums;
+}
+@media (max-width: 760px) {
+  .card { grid-template-columns: 1fr; min-height: 0; }
+  .panel { order: -1; min-height: 140px; }
+  .panel span { left: 22px; bottom: 16px; font-size: 64px; }
+  .content { padding: 28px 22px 26px; }
+}
+h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -.03em; text-wrap: balance; margin: 0; color: var(--ink); }
+h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.08; }
+h2 { font-size: clamp(24px, 3.4vw, 32px); line-height: 1.15; }
+.lede { color: var(--muted); margin: 0; max-width: 52ch; font-size: 16px; }
+.hint { font-size: 14px; color: var(--muted); margin: -14px 0 0; }
+.options { display: grid; gap: 8px; }
+.opt {
+  display: flex; gap: 12px; align-items: center; text-align: left; width: 100%;
+  background: var(--bg); border: 1px solid transparent; border-radius: 12px; padding: 12px 16px;
+  font: 400 15px/1.4 var(--font-body); color: var(--ink); cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.opt:hover { border-color: var(--accent); }
+.opt[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt:disabled { opacity: .45; cursor: not-allowed; }
+.mark { flex: none; width: 18px; height: 18px; border: 1.5px solid var(--muted); display: grid; place-items: center; }
+.opt[role="radio"] .mark { border-radius: 50%; }
+.opt[role="checkbox"] .mark { border-radius: 5px; }
+.opt[aria-checked="true"] .mark { border-color: var(--accent); background: var(--accent); }
+.opt[aria-checked="true"] .mark::after { content: ""; width: 6px; height: 6px; background: var(--accent-ink); border-radius: inherit; }
+textarea {
+  width: 100%; min-height: 140px; resize: vertical; padding: 14px 16px;
+  font: 400 15px/1.5 var(--font-body); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px;
+}
+textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+.meta { font-size: 14px; color: var(--muted); }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 500 14px var(--font-body); padding: 0 6px 0 20px; height: 44px; border-radius: 999px; cursor: pointer;
+  border: none; background: var(--accent); color: var(--accent-ink);
+}
+.btn .arrow { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.18); display: grid; place-items: center; }
+.btn.round { width: 44px; padding: 0; justify-content: center; }
+.btn.round .arrow { background: none; }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn.ghost { text-decoration: none; background: none; color: var(--muted); border: 1px solid var(--line); padding: 0 18px; }
+.note { font-size: 13px; color: var(--muted); margin: 0; }
+.note.warn { color: #B4533A; }
+.foot { font-size: 13px; color: var(--muted); text-align: center; }
+/* results */
+.stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.stats b { display: block; font: 400 44px/1 var(--font-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.rgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.rq { background: var(--bg); border-radius: 16px; padding: 22px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.rq h3 { margin: 0 0 4px; font: 500 17px/1.3 var(--font-display); letter-spacing: -.01em; }
+.rq.full { grid-column: 1 / -1; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 4px 10px; align-items: center; font-size: 14px; }
+.row .track { grid-column: 1 / -1; height: 6px; background: var(--accent-soft); border-radius: 3px; overflow: hidden; }
+.row .track i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.row span:nth-child(2) { text-align: right; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.quotes { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.quotes li { font: 400 17px/1.4 var(--font-display); letter-spacing: -.01em; padding: 12px 16px; background: var(--card); border-radius: 12px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <div class="label">Rose Hill Life Sciences<span class="dot">·</span><span class="dim">Reader survey</span></div>
+  </div>
+  <main class="card" id="shell">
+    <div class="content" id="card" aria-live="polite"></div>
+    <div class="panel" aria-hidden="true"><span id="panelnum"></span></div>
+  </main>
+  <div class="foot">5 questions · about 2 minutes · no health information collected</div>
+</div>
+
+<script>
+/* ===== SETUP =====
+   Paste the URL that should receive each response as a JSON POST.
+   Works with Formspree (https://formspree.io/f/xxxx), Basin, Zapier/Make webhooks,
+   or your own API route. Leave empty to test the page without saving. */
+const SUBMIT_URL = "/api/survey";
+/* ================= */
+
+const QUESTIONS = [
+  { id: "role", type: "single", title: "Which best describes you?",
+    options: ["Researcher or academic", "Clinician or healthcare professional", "Investor or analyst",
+              "Industry, supply or biotech", "Policy, legal or regulatory", "Curious reader following psychedelic medicine"] },
+  { id: "topics", type: "multi", max: 3, title: "What would you like to read more of?", hint: "Pick up to three.",
+    options: ["Clinical trial updates (stroke, depression, autism, PTSD)", "Science explainers: alkaloids, formulation, dosing research",
+              "Policy and regulation by state and country", "Market and investment news",
+              "Cultivation and supply", "Interviews with researchers and the Rose Hill team",
+              "Retreats and guided wellness programs"] },
+  { id: "depth", type: "single", title: "How deep should we go?",
+    options: ["Quick roundup I can skim in 2 minutes", "A mix: short updates plus one deeper story", "Full deep dives with data and citations"] },
+  { id: "frequency", type: "single", title: "How often would you like to hear from us?",
+    options: ["Weekly", "Every two weeks", "Monthly", "Only when there is major news"] },
+  { id: "question", type: "text", title: "What is one question about psychedelic medicine you wish someone would answer?",
+    hint: "Optional. We may answer it in a future issue." }
+];
+
+let step = -1;                 // -1 = intro, 0..4 questions, 5 = done
+let answers = { topics: [] };
+let submitted = false, saveError = "";
+const STORE_KEY = "rosehill-survey-2026-10";
+const card = document.getElementById("card");
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "on") for (const [e, f] of Object.entries(v)) n.addEventListener(e, f);
+    else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids.flat()) if (k != null) n.append(k.nodeType ? k : document.createTextNode(k));
+  return n;
+}
+
+function answered(q) {
+  const a = answers[q.id];
+  if (q.type === "multi") return a.length > 0;
+  if (q.type === "text") return true;
+  return !!a;
+}
+
+function renderIntro() {
+  card.replaceChildren(
+    el("div", { class: "label" }, "Reader survey", el("span", { class: "dot" }, "·"), el("span", { class: "dim" }, "Oct 2026")),
+    el("h1", {}, "Help shape what we write next"),
+    el("p", { class: "lede" }, "We cover psilocybin research, clinical trials, policy and the business of psychedelic medicine. Tell us what you want more of and we will build the next issues around it."),
+    el("div", { class: "nav" },
+      el("span", { class: "meta" }, "5 questions · 2 min"),
+      el("button", { class: "btn", id: "start", on: { click: () => go(0) } }, "Start the survey", arrow()))
+  );
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[step];
+  const kids = [
+    el("div", { class: "label" }, `Question ${step + 1} of ${QUESTIONS.length}`, el("span", { class: "dot" }, "·"), el("span", { class: "dim" }, LABELS[q.id])),
+    el("h2", { id: "qtitle" }, q.title)
+  ];
+  if (q.hint) kids.push(el("p", { class: "hint" }, q.hint));
+
+  if (q.type === "text") {
+    const ta = el("textarea", { id: "q-" + q.id, "aria-labelledby": "qtitle", maxlength: "1000", placeholder: "Type your question" });
+    ta.value = answers[q.id] || "";
+    ta.addEventListener("input", () => { answers[q.id] = ta.value; });
+    kids.push(ta);
+  } else {
+    const group = el("div", { class: "options", role: q.type === "multi" ? "group" : "radiogroup", "aria-labelledby": "qtitle" });
+    q.options.forEach((o, i) => {
+      const sel = q.type === "multi" ? answers.topics.includes(o) : answers[q.id] === o;
+      const full = q.type === "multi" && !sel && answers.topics.length >= q.max;
+      group.append(el("button", {
+        class: "opt", id: `q-${q.id}-${i}`, role: q.type === "multi" ? "checkbox" : "radio",
+        "aria-checked": String(sel), disabled: full,
+        on: { click: () => pick(q, o) }
+      }, el("span", { class: "mark" }), el("span", {}, o)));
+    });
+    kids.push(group);
+  }
+
+  const last = step === QUESTIONS.length - 1;
+  const next = el("button", { class: "btn", id: "next", disabled: !answered(q), on: { click: last ? submit : () => go(step + 1) } },
+    last ? "Submit answers" : "Next", arrow());
+  kids.push(el("div", { class: "nav" },
+    el("button", { class: "btn ghost", id: "back", on: { click: () => go(step - 1) } }, "Back"), next));
+  if (saveError) kids.push(el("p", { class: "note warn" }, saveError));
+  card.replaceChildren(...kids);
+}
+
+function pick(q, o) {
+  if (q.type === "multi") {
+    const t = answers.topics;
+    answers.topics = t.includes(o) ? t.filter(x => x !== o) : t.length < q.max ? [...t, o] : t;
+  } else {
+    answers[q.id] = o;
+  }
+  renderQuestion();
+  document.getElementById(`q-${q.id}-${q.options.indexOf(o)}`)?.focus();
+}
+
+function go(n) { step = n; saveError = ""; render(); }
+
+async function submit() {
+  const btn = document.getElementById("next");
+  btn.disabled = true; btn.firstChild.textContent = "Saving…";
+  const payload = {
+    role: answers.role, topics: answers.topics, depth: answers.depth, frequency: answers.frequency,
+    question: (answers.question || "").trim().slice(0, 1000), submittedAt: new Date().toISOString()
+  };
+  payload.topicsText = payload.topics.join("; ");
+  payload.page = location.href;
+  if (SUBMIT_URL) {
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(res.status);
+      submitted = true;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(payload)); } catch (e) {}
+    } catch (e) {
+      saveError = "We couldn't send your answers. Check your connection and try again.";
+      btn.disabled = false; btn.firstChild.textContent = "Submit answers";
+      renderQuestion(); return;
+    }
+  }
+  step = QUESTIONS.length; render();
+}
+
+function renderDone() {
+  card.replaceChildren(
+    el("div", { class: "label" }, "Survey complete"),
+    el("h1", {}, "Thank you"),
+    el("p", { class: "lede" }, submitted
+      ? "Your answers are in. Watch for upcoming issues shaped by what readers asked for."
+      : "Test mode: no SUBMIT_URL is set, so these answers were not saved."),
+    el("div", { class: "nav" },
+      el("span", { class: "meta" }, "Thanks for reading Rose Hill"),
+      el("a", { class: "btn ghost", href: "/" }, "Back to the newsletter"))
+  );
+}
+
+function arrow() {
+  return el("span", { class: "arrow", "aria-hidden": "true" }, "→");
+}
+const LABELS = { role: "About you", topics: "Topics", depth: "Depth", frequency: "Frequency", question: "Your question" };
+function render() {
+  const num = document.getElementById("panelnum");
+  num.textContent = step < 0 ? "" : step >= QUESTIONS.length ? "✓" : String(step + 1).padStart(2, "0") + "/05";
+  if (step < 0) renderIntro();
+  else if (step >= QUESTIONS.length) renderDone();
+  else renderQuestion();
+}
+
+try {
+  const prev = JSON.parse(localStorage.getItem(STORE_KEY) || "null");
+  if (prev) { submitted = true; step = QUESTIONS.length; }
+} catch (e) {}
+
+render();
+</script>
+</body>
+</html>

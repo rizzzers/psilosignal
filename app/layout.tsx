@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Inter_Tight } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
+import SurveyButton from './components/SurveyButton'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -135,6 +136,7 @@ export default function RootLayout({
         }}
       >
         {children}
+        <SurveyButton />
       </body>
       <GoogleAnalytics gaId="G-P001BVPQD3" />
     </html>
