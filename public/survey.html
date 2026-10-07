@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reader Survey | Rose Hill Life Sciences</title>
 <meta name="description" content="Five quick questions to help shape the Rose Hill Life Sciences newsletter.">
@@ -10,29 +11,19 @@
 <style>
 /* Layout: the Rose Hill newsletter card system: soft stone cards on cream, a split hero card with a periwinkle-to-gold gradient panel. */
 :root {
-  --bg: #FCFCF5;
-  --card: #EDECE6;
-  --ink: #1E2236;
-  --muted: #6B6F7D;
+  --bg: #FFFDF3;
+  --card: #EFEDE4;
+  --ink: #19243F;
+  --muted: #747F93;
   --line: #DAD9D1;
-  --accent: #6C7DC2;
+  --accent: #527FC1;
   --accent-ink: #FFFFFF;
-  --accent-soft: #DFE1EE;
+  --accent-soft: #E3EAF5;
   --grad: radial-gradient(60% 50% at 80% 78%, #DCC48E 0%, rgba(220,196,142,0) 70%),
           radial-gradient(55% 45% at 30% 20%, #ADA2D2 0%, rgba(173,162,210,0) 70%),
           linear-gradient(150deg, #9C9BD0 0%, #8C93CB 45%, #B9AEB6 100%);
   --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #12131A; --card: #1D1F28; --ink: #ECEDF3; --muted: #9A9EAD; --line: #2C2F3B;
-    --accent: #95A3E0; --accent-ink: #12131A; --accent-soft: #2A2E45; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #12131A; --card: #1D1F28; --ink: #ECEDF3; --muted: #9A9EAD; --line: #2C2F3B;
-  --accent: #95A3E0; --accent-ink: #12131A; --accent-soft: #2A2E45; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { color-scheme: light; }
