@@ -19,13 +19,31 @@ const INQUIRY_LABELS: Record<string, string> = {
   'general': 'General Inquiry',
 }
 
+// Contact fields are free text, so escape them before they go into the email HTML.
+function escapeHtml(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
+    let body
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json({ error: 'Invalid request body.' }, { status: 400 })
+    }
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return NextResponse.json({ error: 'Invalid request body.' }, { status: 400 })
+    }
     const { name, email, organization, inquiryType, message } = body
 
     if (!name || typeof name !== 'string' || name.trim().length === 0) {
@@ -46,14 +64,14 @@ export async function POST(request: NextRequest) {
 
     const cleanName = name.trim()
     const cleanEmail = email.trim().toLowerCase()
-    const cleanOrg = organization?.trim() || ''
+    const cleanOrg = typeof organization === 'string' ? organization.trim() : ''
     const cleanMessage = message.trim()
     const inquiryLabel = INQUIRY_LABELS[inquiryType]
 
     const resend = new Resend(process.env.RESEND_API_KEY)
 
-    await resend.emails.send({
-      from: 'Rose Hill Review <onboarding@resend.dev>',
+    const result = await resend.emails.send({
+      from: 'Rose Hill Life Sciences <notifications@ryanestes.info>',
       to: ['ryan@ryanestes.info', 'fernanda@ryanestes.info'],
       subject: `[${inquiryLabel}] Contact from ${cleanName}`,
       html: `
@@ -64,15 +82,15 @@ export async function POST(request: NextRequest) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px; width: 140px;">Name</td>
-              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanName}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${escapeHtml(cleanName)}</td>
             </tr>
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px;">Email</td>
-              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanEmail}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${escapeHtml(cleanEmail)}</td>
             </tr>
             ${cleanOrg ? `<tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px;">Organization</td>
-              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanOrg}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${escapeHtml(cleanOrg)}</td>
             </tr>` : ''}
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px;">Inquiry type</td>
@@ -81,7 +99,7 @@ export async function POST(request: NextRequest) {
           </table>
           <div style="margin-top: 24px;">
             <div style="font-size: 13px; color: #747F93; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em;">Message</div>
-            <div style="font-size: 15px; color: #19243F; line-height: 1.6; white-space: pre-wrap;">${cleanMessage}</div>
+            <div style="font-size: 15px; color: #19243F; line-height: 1.6; white-space: pre-wrap;">${escapeHtml(cleanMessage)}</div>
           </div>
           <p style="margin-top: 32px; font-size: 13px; color: #747F93; border-top: 1px solid #EFEDE4; padding-top: 16px;">
             Submitted via rosehillreview.com
@@ -89,6 +107,11 @@ export async function POST(request: NextRequest) {
         </div>
       `,
     })
+
+    if (result.error) {
+      console.error('Contact error (Resend API):', result.error)
+      return NextResponse.json({ error: 'Something went wrong. Please try again.' }, { status: 502 })
+    }
 
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
