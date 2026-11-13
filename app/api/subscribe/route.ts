@@ -37,36 +37,8 @@ export async function POST(request: NextRequest) {
     const cleanName = firstName.trim()
     const cleanEmail = email.trim().toLowerCase()
 
-    // Actually subscribe them on Kit (this previously only fired the internal
-    // notification below and never enrolled the visitor at all).
-    //
-    // Uses the generic /v4/subscribers endpoint rather than
-    // /v4/forms/{id}/subscribers: the latter 404s ("Form ID not found") for
-    // both forms on this account because they're "embed"-type forms, which
-    // Kit's API does not support subscribing to directly. Creating the
-    // subscriber account-wide is the reliable path regardless of form type.
-    // A Kit failure must never block the team notification below, so record it
-    // and report it in the email instead of returning early.
-    let kitStatus = 'Added to Kit'
-    const kitApiKey = process.env.KIT_API_KEY
-    if (kitApiKey) {
-      const kitRes = await fetch('https://api.kit.com/v4/subscribers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Kit-Api-Key': kitApiKey,
-        },
-        body: JSON.stringify({ email_address: cleanEmail, first_name: cleanName, state: 'active' }),
-      })
-      if (!kitRes.ok) {
-        const errBody = await kitRes.text()
-        console.error('Kit subscribe error:', kitRes.status, errBody)
-        kitStatus = `NOT added to Kit (Kit returned ${kitRes.status}); add manually if valid`
-      }
-    } else {
-      console.error('KIT_API_KEY is not set; skipping actual Kit subscription.')
-      kitStatus = 'NOT added to Kit (KIT_API_KEY not set)'
-    }
+    // Notification only: the team reviews each signup and adds it to Kit by
+    // hand. This route must never subscribe anyone to Kit directly.
 
     // Initialize Resend lazily so missing env var doesn't crash at module load
     const resend = new Resend(process.env.RESEND_API_KEY)
@@ -90,10 +62,6 @@ export async function POST(request: NextRequest) {
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #747F93; font-size: 14px;">Email</td>
               <td style="padding: 12px 0; border-bottom: 1px solid #EFEDE4; color: #19243F; font-size: 14px; font-weight: 500;">${cleanEmail}</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px 0; color: #747F93; font-size: 14px;">Kit</td>
-              <td style="padding: 12px 0; color: #19243F; font-size: 14px;">${kitStatus}</td>
             </tr>
           </table>
           <p style="margin-top: 24px; font-size: 13px; color: #747F93;">
