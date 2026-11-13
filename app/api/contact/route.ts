@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 520px; margin: 0 auto; padding: 32px 24px;">
           <h2 style="font-size: 20px; font-weight: 600; color: #19243F; margin-bottom: 16px;">
-            New contact inquiry — Rose Hill Review
+            New contact inquiry: Rose Hill Review
           </h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>

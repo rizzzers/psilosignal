@@ -535,7 +535,7 @@ export default async function HomePage() {
                 iconBg: 'linear-gradient(135deg, var(--sunshine), var(--lavender))',
                 tag: '03 / Researchers & clinicians',
                 title: 'For researchers and clinicians who need consolidated coverage.',
-                desc: 'Neuroscientists, psychiatrists, and trial coordinators who want consolidated weekly updates on protocols, outcomes, and regulatory shifts — drawn from primary sources, not secondhand summaries.',
+                desc: 'Neuroscientists, psychiatrists, and trial coordinators who want consolidated weekly updates on protocols, outcomes, and regulatory shifts, drawn from primary sources, not secondhand summaries.',
                 icon: <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="1.5"><path d="M9 2v6.5L4 12v8h16v-8l-5-3.5V2zM9 2h6"/></svg>,
               },
               {

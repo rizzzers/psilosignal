@@ -402,7 +402,7 @@ export default async function IssuePage({ params }: Props) {
                 margin: '0 auto 32px',
               }}
             >
-              Clinical science, veteran data, and honest coverage of psychedelic medicine — every Tuesday.
+              Clinical science, veteran data, and honest coverage of psychedelic medicine, every Tuesday.
             </p>
             <div style={{ maxWidth: '480px', margin: '0 auto' }}>
               <SignupForm variant="hero" />

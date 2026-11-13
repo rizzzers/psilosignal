@@ -20,7 +20,7 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rosehillreview.com'),
   title: {
-    default: 'Rose Hill Review — A Psychedelic Brief',
+    default: 'Rose Hill Review: A Psychedelic Brief',
     template: '%s | Rose Hill Review',
   },
   description:
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.rosehillreview.com',
     siteName: 'Rose Hill Review',
-    title: 'Rose Hill Review — A Psychedelic Brief',
+    title: 'Rose Hill Review: A Psychedelic Brief',
     description:
       'A weekly brief on the science, regulation, and human story of psychedelic medicine. Published by Rose Hill Life Sciences.',
     images: [
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rose Hill Review — A Psychedelic Brief',
+    title: 'Rose Hill Review: A Psychedelic Brief',
     description:
       'A weekly brief on the science, regulation, and human story of psychedelic medicine. Published by Rose Hill Life Sciences.',
     images: ['/og-image.png'],
