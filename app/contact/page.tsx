@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import AskAI from '../components/AskAI'
 
 const INQUIRY_TYPES = [
   { value: '', label: 'Select inquiry type' },
@@ -379,6 +380,7 @@ export default function ContactPage() {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',

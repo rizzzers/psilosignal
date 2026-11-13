@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getAllSlugs } from '@/lib/blog'
+import AskAI from '../../components/AskAI'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -397,6 +398,7 @@ export default async function BlogPostPage({ params }: Props) {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',

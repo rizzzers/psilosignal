@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/blog'
+import AskAI from '../components/AskAI'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -289,6 +290,7 @@ export default function BlogIndexPage() {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',

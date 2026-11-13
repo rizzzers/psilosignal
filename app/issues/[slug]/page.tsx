@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getIssueBySlug, getAllIssues } from '@/lib/issues'
 import SignupForm from '@/app/components/SignupForm'
+import AskAI from '../../components/AskAI'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -434,6 +435,7 @@ export default async function IssuePage({ params }: Props) {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',

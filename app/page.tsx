@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SignupForm from './components/SignupForm'
 import { getAllIssues } from '@/lib/issues'
+import AskAI from './components/AskAI'
 
 export default async function HomePage() {
   const issues = getAllIssues()
@@ -831,6 +832,7 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
+        <AskAI />
         <div style={{ maxWidth: '1200px', margin: '0 auto', paddingTop: '32px', borderTop: '1px solid rgba(239, 237, 228, 0.08)', display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'rgba(239, 237, 228, 0.5)' }} className="footer-bottom-bar">
           <span>&copy; 2026 Rose Hill Life Sciences</span>
           <span>Shrewsbury, MA</span>

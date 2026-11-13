@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import SignupForm from '../components/SignupForm'
+import AskAI from '../components/AskAI'
 
 export default function SubscribePage() {
   return (
@@ -149,6 +150,7 @@ export default function SubscribePage() {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',

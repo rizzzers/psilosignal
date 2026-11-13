@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllIssues } from '@/lib/issues'
+import AskAI from '../components/AskAI'
 
 export const metadata: Metadata = {
   title: 'Full archive',
@@ -219,6 +220,7 @@ export default function ArchivePage() {
           borderTop: '1px solid rgba(239, 237, 228, 0.08)',
         }}
       >
+        <AskAI />
         <div
           style={{
             maxWidth: '1200px',
